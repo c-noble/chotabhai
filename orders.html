@@ -198,7 +198,7 @@
         //}
 
         //##### check for products unavailability #####
-        if(sessionStorage == null) {
+        if(sessionStorage.length == 0) {
             var btn = document.getElementById('clrBtn');
             btn.className = 'disabled';
             msg.innerHTML = "Ooops! you have no orders right now.";
