@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Chotabhai Snacks Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .para {
+            margin-left: 5px;
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+        img {
+            height: 246px;
+            width: 166px;
+            border: 4px solid aliceblue;
+        }
+        img-label{
+            text-align: center;
+        }
+        .price {
+            color: darkgray;
+        }
+        .card-title {
+            font-family: monospace;
+        }
+        .card {
+            margin: 10px;
+        }
+
+        section {
+          margin-top: 10px;
+        }
+
+        header {
+          background-color: aliceblue;
+        }
+
+        #user {
+          margin-top: 5px;
+          font-family: cursive;
+        }
+
+        @media screen and (max-width: 550px) {
+          nav {
+            margin: 2px;
+          }
+
+          nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid lightpink;
+            background-color: lightpink;
+          }
+
+          li {
+            float: left;
+          }
+
+          li a {
+            display: block;
+            color: #DC143C;
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+          }
+
+          #user {
+            font-family: cursive;
+            margin-top: 3px;
+          }
+
+          .para {
+            margin: 3px;
+            font-size: 1.2em;
+          }
+
+          section {
+            margin-top: 10px;
+          }
+
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <center><img id="logo" src="images/chotabhai.png"></center>
+        <center><small>Many many deals and many smiles!</small></center>
+        <nav>
+            <ul>
+                <li><a href="login.html" id="log" onclick="logout()">Login</a></li>
+                <li><a class="active" href="#Home">Home</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="orders.html">My Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article>
+            <p id="user"></p>
+            <p class="para" style="text-align: justify;">Hello there! You may wonder by seeing our stores. Nine varieties of snacks are served in our store. You
+                can explore some spicy, some sweet and some more delicious snacks.<br> Stop waiting; Get ready for
+                everyday for special evenings with Snacks Store.</p>
+
+        </article>
+        <article>
+            <div class="card-group">
+                <div class="card">
+                  <img class="card-img-top" src="images/vada_pav.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Vada Pav</h5>
+                    <p class="card-text">Rs. 15 <span class="price"><del>20</del></span></p>
+                    <button class="btn btn-info" id="vadaPav" onclick="goToCart('item1', 'Vada Pav', 'images/vada_pav.jpg', 15)">Add to cart</button>
+                    <p class="card-text"><small class="text-muted">Available</small></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <img class="card-img-top" src="images/samosa.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Samosa</h5>
+                    <p class="card-text">Rs. 15 <span class="price"><del>20</del></span></p>
+                    <button class="btn btn-info" id="samosa" onclick="goToCart('item2', 'Samosa', 'images/samosa.jpg', 15)">Add to cart</button>
+                    <p class="card-text"><small class="text-muted">Available</small></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <img class="card-img-top" src="images/masala_bun.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Butter Masala Bun</h5>
+                    <p class="card-text">Rs. 15 <span class="price"><del>20</del></span></p>
+                    <button class="btn btn-info" id="masalaBun" onclick="goToCart('item3', 'Butter Masala Bun', 'images/masala_bun.jpg', 15)">Add to cart</button>
+                    <p class="card-text"><small class="text-muted">Available</small></p>
+                  </div>
+                </div>
+            </div>
+        </article>
+        <article>
+            <div class="card-group">
+                <div class="card">
+                  <img class="card-img-top" src="images/egg_bun.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Egg Bun</h5>
+                    <p class="card-text">Rs. 20 <span class="price"><del>25</del></span></p>
+                    <button class="btn btn-info" id="eggBun" onclick="goToCart('item4', 'Egg Bun', 'images/egg_bun.jpg', 20)">Add to cart</button>
+                    <p class="card-text"><small class="text-muted">Available</small></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <img class="card-img-top" src="images/paneer_masala_bun.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Paneer Bun</h5>
+                    <p class="card-text">Rs. 20 <span class="price"><del>25</del></span></p>
+                    <button class="btn btn-info" id="paneerMasalaBun" onclick="goToCart('item5', 'Paneer Bun', 'images/paneer_masala_bun.jpg', 20)">Add to cart</button>
+                    <p class="card-text"><small class="text-muted">Available</small></p>
+                  </div>
+                </div>
+                <div class="card">
+                  <img class="card-img-top" src="images/chocolate_cream_bun.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">Chocolate Cream Bun</h5>
+                    <p class="card-text">Rs. 25 <span class="price"><del>35</del></span></p>
+                    <button class="btn btn-info" id="chocolateCreamBun" onclick="goToCart('item6', 'Chocolate Cream Bun', 'images/chocolate_cream_bun.jpg', 25)">Add to cart</button>
+                    <p class="card-text"><small class="text-muted">Available</small></p>
+                  </div>
+                </div>
+            </div>
+        </article>
+        <article>
+          <div class="card-group">
+              <div class="card">
+                <img class="card-img-top" src="images/banana_chips.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Banana Chips</h5>
+                  <p class="card-text">Rs. 15 <span class="price"><del>20</del></span></p>
+                  <button class="btn btn-info" id="bananaChips" onclick="goToCart('item7', 'Banana Chips', 'images/banana_chips.jpg', 15)">Add to cart</button>
+                  <p class="card-text"><small class="text-muted">Available</small></p>
+                </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="images/snacks_combo.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Snacks Combo</h5>
+                  <p class="card-text">2 Samosas, 2 Egg Buns</p>
+                  <p class="card-text">Rs. 70 <span class="price"><del>90</del></span></p>
+                  <button class="btn btn-info" id="snacksCombo" onclick="goToCart('item8', 'Snacks Combo', 'images/snacks_combo.jpg', 70)">Add to cart</button>
+                  <p class="card-text"><small class="text-muted">Available</small></p>
+                </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="images/snacks_combo_plus.jpg" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Snacks Combo Plus</h5>
+                  <p class="card-text">2 Samosas, 2 Vadapavs, 2 Masala Buns, 2 Coffees</p>
+                  <p class="card-text">Rs. 100 <span class="price"><del>120</del></span></p>
+                  <button class="btn btn-info" id="snacksComboPlus" onclick="goToCart('item9', 'Snacks Combo Plus', 'images/snacks_combo_plus.jpg', 100)">Add to cart</button>
+                  <p class="card-text"><small class="text-muted">Available</small></p>
+                </div>
+              </div>
+          </div>
+      </article>
+    </section>
+    
+    <footer>
+      <center><small>2022 Snacks Store ltd.</small></center>
+    </footer>
+
+    <script>
+      
+      var user = document.getElementById('user');
+      var log = document.getElementById('log');
+
+      //##### get user information from local storage #####
+      if(localStorage.getItem('user_data') != null) {
+        log.innerHTML = 'Logout';
+        var userData = JSON.parse(localStorage.getItem('user_data'));
+        user.innerHTML = `Welcome ${userData.uname}!`;
+      } else {
+        user.innerHTML = "Please, login to continue your orders.";
+      }
+
+      //##### logout the user #####
+      function logout() {
+        localStorage.clear();
+        sessionStorage.clear();
+        //alert('logged out successfully');
+        user.innerHTML = 'Please, login to continue your orders.';
+        //return window.location.href = '#index';
+      }
+
+      //##### store the product informtion into session storage #####
+      function goToCart(id, item, img, cost) {
+        //##### check if the user is login #####
+        if(localStorage.getItem('user_data') == null) {
+          alert('Please, login to continue your orders.');
+          return window.location.href = "login.html";
+        } else {
+          var data = {
+            'id' : id,
+            'name' : item,
+            'img_url' : img,
+            'cost' : cost
+          }
+          localStorage.setItem(id, JSON.stringify(data));
+          return window.location.href = "cart.html";
+        }
+      }
+
+    </script>
+</body>
+</html>

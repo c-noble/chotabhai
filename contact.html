@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Chotabhai Snacks Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style >
+        p.one {
+            margin-right: 300px;
+            margin-left: 350px;
+            font-family: Verdana;
+            border: 10px double brown;
+            background-color: pink;
+        }
+
+        section {
+          margin-top: 170px;
+        }
+
+        img {
+            width: 500px;
+            height: 450px;
+        }
+
+        h2 {
+            margin-left: 500px;
+            margin-right: 500px;
+        }
+
+        @media screen and (max-width: 550px) {
+            section {
+                margin-top: 190px;
+            }
+          nav {
+            margin: 2px;
+          }
+
+          nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid lightpink;
+            background-color: lightpink;
+          }
+
+          li {
+            float: left;
+          }
+
+          li a {
+            display: block;
+            color: #DC143C;
+            text-align: center;
+            padding: 8px 10px;
+            text-decoration: none;
+          }
+
+          h2 {
+            margin: 10px;
+          }
+
+          img {
+            height: 400px;
+            width: 100%;
+          }
+
+          p.one {
+            margin-right: 0px;
+            margin-left: 0px;
+            font-family: Verdana;
+            border: 10px double brown;
+            background-color: pink;
+          }
+
+        }
+
+        @media screen and (min-width: 700px) {
+            h2 {
+                margin-left: 250px;
+                margin-right: 250px;
+            }
+
+            p.one {
+                margin-right: 85px;
+                margin-left: 85px;
+                padding: 2px;
+                font-family: Verdana;
+                border: 10px double brown;
+                background-color: pink;
+            }
+        }
+
+        @media screen and (min-width: 1200px) {
+            h2 {
+                margin-left: 500px;
+                margin-right: 500px;
+            }
+            p.one {
+                margin-right: 300px;
+                margin-left: 350px;
+                font-family: Verdana;
+                border: 10px double brown;
+                background-color: pink;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header class="fixed-top">
+        <center><img id="logo" src="images/chotabhai.png"></center>
+        <center><small>Many many deals and many smiles!</small></center>
+        <nav>
+            <ul>
+                <li><a href="login.html" id="log" onclick="logout()">Login</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About us</a></li>
+                <li><a class="active" href="#contact">Contact us</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="orders.html">My Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <article>
+            <h2 style="text-align:center; font-family:verdana; border:10px inset gold;">Contact us</h2>
+            <center>
+            <p class="one">Mobile Number: 98480XXXXX<br>
+             Email: support@snacksstore.com<br>
+             Address: Noble plaza, 3rd cross, 3rd stage, Rajajinagar, Bengaluru-16</p>
+            </center>
+            <br>
+            <center><img src="images/chips.jpg" /></center>
+        </article>
+    </section>
+    <footer>
+        <center><small>2022 Snack Store ltd.</small></center>
+    </footer>
+
+    <script>
+      var log = document.getElementById('log');
+        //##### get user information from local storage #####
+      if(localStorage.getItem('user_data') != null) {
+        log.innerHTML = 'Logout';
+      } 
+
+      //##### logout the user #####
+      function logout() {
+        localStorage.clear();
+        sessionStorage.clear();
+      }
+    </script>
+</body>
+</html>

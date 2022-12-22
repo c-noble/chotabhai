@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Chotabhai Snacks Store</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        h1 {
+            font-size: 4em;
+            font-family: cursive;
+            color: hotpink;
+        }
+
+        aside {
+            width: 50%;
+            padding: 15px;
+            margin-top: 100px;
+            margin-left: 15px;
+            margin-right: 30px;
+            float: right;
+            background-color: antiquewhite;
+        }
+
+        article {
+            height: 40%;
+            width: 40%;
+            margin-top: 60px;
+            float: left;
+            text-align: center;
+        }
+
+        #content {
+            margin: 20px;
+        }
+
+        #logo {
+            height: 100px; 
+            width: 400px;
+        }
+
+        img {
+            margin-top: 25px;
+            height: 250px;
+            width: 350px;
+        }
+
+        small {
+            font-family: 'Courier New', Courier, monospace;
+            color: crimson;
+        }
+
+        footer {
+            margin-top: 600px;
+        }
+
+        @media screen and (max-width: 550px){
+            #logo {
+                height: 60px;
+                width: 240px;
+            }
+
+            h1 {
+                font-size: 3em;
+                font-family: cursive;
+                color: hotpink;
+            }
+
+            aside {
+                width: 100%;
+                padding: 15px;
+                margin-top: 10px;
+                margin-left: 0px;
+                margin-right: 0px;
+                float: none;
+                background-color: antiquewhite;
+            }
+
+            article {
+                width: 100%;
+                margin-top: 1px;
+                float: none;
+                text-align: center;
+            }
+
+            #content {
+                margin: 20px;
+            }
+
+            img {
+                margin-top: 25px;
+                height: 250px;
+                width: 100%;
+            }
+
+            small {
+                font-size: 1em;
+                font-family: 'Courier New', Courier, monospace;
+                color: crimson;
+            }
+        }
+    </style>
+    <script>
+        //##### validate user credentials from session storage or web sql #####
+        function validate() {
+            let email = document.forms["form"]["email"].value;
+            let password = document.forms["form"]["password"].value;
+            const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            const passwordPattern = /^[A-Za-z]\w|!|@|#|$|%|\&|\*|\+\={7,15}$/;
+            var status = false;
+            if (email == "") {
+                document.getElementById("userEmail").innerHTML = "Email must be entered!";
+                status = false;
+            }
+            else if (!email.match(emailPattern)) {
+                document.getElementById("userEmail").innerHTML = "Invalid email id!";
+                status = false;
+            }
+            else if (password == "") {
+                document.getElementById("userEmail").innerHTML = "";
+                document.getElementById("userPassword").innerHTML = "Password must be entered!";
+                status = false;
+            }
+            else if (!password.match(passwordPattern)) {
+                document.getElementById("userEmail").innerHTML = "";
+                document.getElementById("userPassword").innerHTML = "Invalid password format!";
+                status = false;
+            }
+            else {
+                document.getElementById("userPassword").innerHTML = "";
+                //status = authenticateUserOnWebSql(email, password);
+                status = authenticateUserOnLocalStorage(email, password);
+                //status = authenticateUserOnSessionStorage(email, password);
+                //console.log('Status: ' + status);
+            }
+
+            //##### check status for correct user credentials #####
+            if (status) {
+                return window.location.href = "index.html";
+            }
+            return false
+        }
+
+        //##### check credentials on web sql #####
+        function authenticateUserOnWebSql(email, password) {
+            var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
+            var testPassword = "", user = "";
+            db.transaction(function (tx) {
+                tx.executeSql('SELECT password FROM USER_DETAILS WHERE email=?', [email], function (tx, results) {
+                    for (i = 0; i < len; i++) {
+                        testPassword = results.rows.item(i).password;
+                        user = results.rows.item(i).name;
+                    }
+                }, null);
+            });
+            if (password != testPassword) {
+                document.getElementById("userPassword").innerHTML = "Invalid user credentials!";
+                return false;
+            }
+            //console.log("Hello, " + user);
+            //alert("Hello, " + user);
+
+            return true;
+        }
+
+        //##### check credentials on session storage #####
+        function authenticateUserOnSessionStorage(email, password) {
+            var data = sessionStorage.getItem(email);
+            if(data == null) {
+                alert('email is not registered!')
+            }
+            var obj = JSON.parse(data);
+            var testPassword = obj.password;
+            var user = obj.uname;
+            if (password !== testPassword) {
+                document.getElementById("userPassword").innerHTML = "Invalid user credentials!";
+                return false;
+            }
+            return true;
+        }
+
+        //##### check credentials on local storage #####
+        function authenticateUserOnLocalStorage(email, password) {
+            var data = localStorage.getItem('user_data');
+            if(data == null) {
+                alert('email is not registered!')
+                window.location.reload();
+            }
+            var obj = JSON.parse(data);
+            var testPassword = obj.password;
+            var user = obj.uname;
+            if (password !== testPassword) {
+                document.getElementById("userPassword").innerHTML = "Invalid user credentials!";
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+
+<body>
+    <article>
+        <center><img id="logo" src="images/chotabhai.png"></center>
+        <small style="color : black;" id="tagLine">Many many deals and many smiles!</small>
+        <br>
+        <img src="images/snacks_combo.jpg" class="rounded">
+    </article>
+    <aside class="rounded">
+        <small style="color : black">If new user, sign up here!</small>
+        <button class="btn btn-secondary" onclick="location.href='signup.html'">Signup</button>
+        <form name="form" method="POST" onsubmit="return false">
+            <label>Email</label>
+            <input class="form-control" type="email" name="email" placeholder="Email">
+            <small id="userEmail"></small><br>
+            <label>Password</label>
+            <input class="form-control" type="password" name="password" placeholder="min = 8, max = 14, Ex: Abcd123@">
+            <small id="userPassword"></small><br>
+            <button class="btn btn-primary" onclick="validate()">Submit</button>
+        </form>
+    </aside>
+
+</body>
+
+</html>
